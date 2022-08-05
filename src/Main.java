@@ -1,17 +1,29 @@
 public class Main {
     public static void main(String[] args) {
-        //  publicly available members of a type (class, interface, enum, annotation, record)
-        //  together are called the API
+        //  When Circle inherits the API of Shape,
+        //  can it specialize the implementation?
 
-        //  Subclasses inherit the API of the superclasses (superclass may extend
-        //  another superclass so upward the hierarchy)
+        //  The answer is yes! The subclasses are allowed to
+        //  (in fact, in most cases, appreciated/expected to)
+        //  provide their special implementation
+
+        //  Thus you have the superclass providing API, but subclasses
+        //  providing implementations
+
+        //  This brings in a very important feature of object-orientation
+        //  called dynamic dispatch or runtime polymorphism
+
         Shape[] shapes = new Shape[] {
                 new Circle("green"),
                 new Triangle("red")
         };
 
         for (Shape s: shapes) {
-            s.draw();   //  API of Shape is assured be accessible by all its subclasses
+            //  This is the dynamic dispatch
+            //  Where should this call be resolved? As we know s can be a Shape, Circle, or Triangle
+            //  Given this fact, the API is determined by the superclass but the execution happens at
+            //  the subclass level (provided they have overrides available)
+            s.draw();
         }
     }
 }

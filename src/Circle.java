@@ -1,16 +1,18 @@
 public class Circle extends Shape {
-    //  It is always a good practice to bank on the
-    //  constructor parameters that are passed by the client
-    //  rather than providing defaults
-
-
     public Circle(String color) {
-        //  As the construction of superclass precedes,
-        //  it is essential to call the superclass constructor
-        //  as the first statement
-
-        //  Remember: this -> current object reference
-        //  super -> superclass member reference
         super(color);
+    }
+
+    //  @Override is an annotation
+    //  Strictly speaking, this is optional. But it is recommended.
+    //  Acts as a safety net for silly errors
+    @Override
+    public void draw() {
+        //  Subclass provides its special implementation
+        //  The superclass implementation can be accessed by
+        //  super.draw();
+
+        //  Since there is no ambiguity, super.getColor() and getColor() are same
+        System.out.println("Circle is drawing with color: " + super.getColor());
     }
 }

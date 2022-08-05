@@ -3,4 +3,9 @@ public class Triangle extends Shape {
     public Triangle(String color) {
         super(color);
     }
+
+    @Override
+    public void draw() {
+        System.out.println("Triangle is drawing with color: " + super.getColor());
+    }
 }
