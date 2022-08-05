@@ -1,37 +1,40 @@
-//  We reckon the Shape is a useful generalization only for the API
-//  and not for any implementation
-//  But then, we would like to enforce the subclasses (Circle and Triangle)
-//  to provide implementation for the API
 
-//  Thus, we make the Shape an "abstract" class
 
-//  Like a regular class, we can have fields, constructors, and methods here
-//  But since it is an abstract class, it cannot be instantiated
-//  (new Shape() is not allowed)
 
-//  Additionally, if we make a method abstract, it cannot have body
-//  And such a method must be overridden in the subclasses
+public interface Shape {
+    //  interface cannot have fields and constructors
 
-//  Generally, the abstract classes are used to set up basic infrastructure for a host
-//  of subclasses
+    //  All methods in an interface are abstract unless marked as default, static, or private
 
-public abstract class Shape {
+    //  public is presumed from interface's accessibility
+    //  abstract is presumed implicitly
 
-    //  if we make the fields (or class variables) final,
-    //  they must either be initialized in place or in constructors
-    private final String color;
+    //  The subclasses (implementers of this interface) must provide the override for this
+    void draw();
 
-    //  We generally choose to initialize the final fields in the constructor
-    public Shape(String color) {
-        this.color = color;
+    //  Starting with Java 8, interfaces can have default methods
+    //  which must have an implementation (default implementation)
+
+    //  Overriding the default methods is optional
+    default String getColor() {
+        return provideColor();  //  accessing the private method
     }
 
-    //  We make the draw an abstract method
-    //  Abstract members can only be defined in the abstract classes
-    public abstract void draw();
+    //  Starting with Java 8, the interfaces can now have
+    //  static methods, which can only be accessed on the interface type
+    //  Shape.foo();
+    static void foo() {
+        //  This runs in the static context, hence instance context (other members) is not accessible
+        //  For example, provideColor() or getColor() are defined in the instance context
+        //  (accessible through an instance alone)
+        System.out.println("A static method");
+    }
 
-    //  Abstract classes can have normal members (including final members)
-    public final String getColor() {
-        return color;
+    //  Starting with Java 11, interfaces can have private methods
+    //  This is to modularize the code in larger interfaces
+    //  private methods can only be accessed within the interface
+    //  by default methods
+    private String provideColor() {
+        return "no color";
     }
 }

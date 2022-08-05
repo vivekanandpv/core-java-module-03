@@ -1,26 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        //  In the polymorphic scenarios, it doesn't actually make sense
-        //  to instantiate the generalized version of the superclass
-        //  as it will be too general (and doesn't serve any useful purpose)
+        //  When the requirement is only to enforce the API
+        //  and no infrastructure provision is required,
+        //  it is better to use interfaces.
 
-        //  So, we use the superclass to enforce the implementation of the API
-        //  in the subclasses. Please note that in normal class inheritance,
-        //  overriding is optional.
+        //  Like abstract classes, interfaces cannot be instantiated
 
-        //  Abstract classes cannot be instantiated directly
-        //  new Shape("blue") -> This is not possible now
-
-        //  Abstract classes can only appear in the type side of the variable, not in the value side
-
-        Shape[] shapes = new Shape[] {
+        Shape[] shapes = new Shape[]{
                 new Circle("green"),
-                new Triangle("red")
-                //  new Shape("blue")   //  This is not possible now
+                new Triangle()
         };
 
-        for (Shape s: shapes) {
-            s.draw();
+        for (Shape s : shapes) {
+            s.draw();   //  this API contract is now enforced
         }
     }
 }
