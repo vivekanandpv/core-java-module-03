@@ -1,19 +1,17 @@
 public class Main {
     public static void main(String[] args) {
-        //  Now that the Circle and Triangle are the subclasses of Shape
-        //  the objects of Circle and Triangle can be substituted for Shape
-        //  Please note this general idea:
-        //  a subclass object can be substituted for a superclass
+        //  publicly available members of a type (class, interface, enum, annotation, record)
+        //  together are called the API
 
-        Shape shapeCircle = new Circle();
-        Shape shapeTriangle = new Triangle();
+        //  Subclasses inherit the API of the superclasses (superclass may extend
+        //  another superclass so upward the hierarchy)
+        Shape[] shapes = new Shape[] {
+                new Circle("green"),
+                new Triangle("red")
+        };
 
-        //  Since Shape itself inherits from Object (implicitly)
-        Object circleObject = new Circle();
-        Object triangleObject = new Triangle();
-
-        //  Thus an object (such as a circle) has multiple identities
-        //  (as a Circle, as a Shape, as an Object)
-        //  This is the polymorphism (many faces)
+        for (Shape s: shapes) {
+            s.draw();   //  API of Shape is assured be accessible by all its subclasses
+        }
     }
 }

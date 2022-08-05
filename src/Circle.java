@@ -1,9 +1,16 @@
-//  Circle is a subclass of Shape
-//  All the public members of the superclass (the API)
-//  is accessible to the subclass
-
-//  We say, Circle inherits from Shape
-//  Please note, in Java, inheriting from multiple superclass is not possible
-
 public class Circle extends Shape {
+    //  It is always a good practice to bank on the
+    //  constructor parameters that are passed by the client
+    //  rather than providing defaults
+
+
+    public Circle(String color) {
+        //  As the construction of superclass precedes,
+        //  it is essential to call the superclass constructor
+        //  as the first statement
+
+        //  Remember: this -> current object reference
+        //  super -> superclass member reference
+        super(color);
+    }
 }
