@@ -2,7 +2,7 @@
 //  (as in taking the common factor)
 //  This allows specializing them in different ways
 //  Thus we keep the features of generalized class
-//  and specialized class in different silos
+//  and specialized class in different baskets
 //  This makes it easy to modularize code.
 //  Modular design leads to easy scaling, ease of maintenance,
 //  and a rational design (the design that is easy to reason about)
@@ -20,5 +20,5 @@
 //  Please note that, in Java, a class implicitly extends from Object superclass
 //  if no explicit superclass is defined (such as for Shape class down here)
 
-public class Shape {
+public class Shape extends Object {
 }
