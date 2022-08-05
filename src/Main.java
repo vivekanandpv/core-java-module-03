@@ -1,28 +1,25 @@
 public class Main {
     public static void main(String[] args) {
-        //  When Circle inherits the API of Shape,
-        //  can it specialize the implementation?
+        //  In the polymorphic scenarios, it doesn't actually make sense
+        //  to instantiate the generalized version of the superclass
+        //  as it will be too general (and doesn't serve any useful purpose)
 
-        //  The answer is yes! The subclasses are allowed to
-        //  (in fact, in most cases, appreciated/expected to)
-        //  provide their special implementation
+        //  So, we use the superclass to enforce the implementation of the API
+        //  in the subclasses. Please note that in normal class inheritance,
+        //  overriding is optional.
 
-        //  Thus you have the superclass providing API, but subclasses
-        //  providing implementations
+        //  Abstract classes cannot be instantiated directly
+        //  new Shape("blue") -> This is not possible now
 
-        //  This brings in a very important feature of object-orientation
-        //  called dynamic dispatch or runtime polymorphism
+        //  Abstract classes can only appear in the type side of the variable, not in the value side
 
         Shape[] shapes = new Shape[] {
                 new Circle("green"),
                 new Triangle("red")
+                //  new Shape("blue")   //  This is not possible now
         };
 
         for (Shape s: shapes) {
-            //  This is the dynamic dispatch
-            //  Where should this call be resolved? As we know s can be a Shape, Circle, or Triangle
-            //  Given this fact, the API is determined by the superclass but the execution happens at
-            //  the subclass level (provided they have overrides available)
             s.draw();
         }
     }
